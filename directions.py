@@ -34,8 +34,13 @@ def _handle_message(bot, event, command):
 @asyncio.coroutine
 def _getdirections(bot, event, text, type):
     logger.info("Directions from text: " + text)
-    mapskey = bot.get_config_option("maps_api_key")
+    try:
+        mapskey = bot.get_config_option("maps_api_key")
+    except:
+        logger.error("Something went wrong getting the API key. Check it and reload.")
+        return
     if not mapskey.startswith("AIza"):
+        logger.error("Your API key is wrong, apparently. Check it and reload.")
         return
     bicycling = ["by bicycling", "by cycling", "by bike", "a bicycle", "to cycle"]
     walking = ["on foot", "by walking", "to walk", "by foot"]

@@ -11,7 +11,11 @@ Ask the bot for directions to and from places, based on certain trigger words: _
 - How long will it take to walk from Sydney to Canberra?
 - How long will it take to get from Sydney to Canberra by public transport?
 
-You'll need to add a **maps\_api\_key** with a maps API key. Also, it's currently biased towards Australia, because I'm lazy - I'll update the region bias to use a config parameter in the future.
+### Setup
+
+1. Create a `maps_api_key` config parameter with a Google Maps API Key. If you need help getting an API key, [read the docs](https://developers.google.com/maps/documentation/directions/get-api-key) for help.
+
+2. Create a `directions_geobias` config parameter with a Google Maps [ccTLD](https://en.wikipedia.org/wiki/Country_code_top-level_domain) of any country where Google Maps has launched dirving directions. See [the docs](https://developers.google.com/maps/documentation/directions/intro#RegionBiasing) for help.
 
 ### Requirements
 
