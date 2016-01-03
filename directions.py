@@ -80,9 +80,9 @@ def _getdirections(bot, event, text, type):
 
             if routeMode:
                 if regionbias:
-		    dirs = gmaps.directions(origin, destination, mode=routeMode, region=regionbias)
+                    dirs = gmaps.directions(origin, destination, mode=routeMode, region=regionbias)
                 else:
-		    dirs = gmaps.directions(origin, destination, mode=routeMode)
+                    dirs = gmaps.directions(origin, destination, mode=routeMode)
 
                 logger.info("Distance mode: " + routeMode)
             else:
