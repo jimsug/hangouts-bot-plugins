@@ -40,6 +40,10 @@ def _getdirections(bot, event, text, type):
     bicycling = ["by bicycling", "by cycling", "by bike", "a bicycle", "to cycle"]
     walking = ["on foot", "by walking", "to walk", "by foot"]
     transit = ["by public transport"]
+    try:
+        regionbias = bot.get_config_option("directions_geobias")
+    except:
+        regionbias = ""
 
     routeMode = ""
 
@@ -70,10 +74,18 @@ def _getdirections(bot, event, text, type):
             logger.info("origin: " + origin + "; destination: " + destination)
 
             if routeMode:
-                dirs = gmaps.directions(origin, destination, mode=routeMode, region="au")
+                if regionbias:
+		    dirs = gmaps.directions(origin, destination, mode=routeMode, region=regionbias)
+                else:
+		    dirs = gmaps.directions(origin, destination, mode=routeMode)
+
                 logger.info("Distance mode: " + routeMode)
             else:
-                dirs = gmaps.directions(origin, destination, region="au")
+                if regionbias:
+                    dirs = gmaps.directions(origin, destination, region=regionbias)
+                else:
+                    dirs = gmaps.directions(origin, destination)
+
                 logger.info("Distance mode: driving")
             try:
                 dirs1 = dirs[0]
