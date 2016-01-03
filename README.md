@@ -21,8 +21,8 @@ Ask the bot for directions to and from places, based on certain trigger words: _
 
 - Google Maps Python library:
 
-    pip3 install google-maps-services-python
+  `pip3 install google-maps-services-python`
 
 - Textblob:
 
-    pip3 install textblob
+  `pip3 install textblob`
