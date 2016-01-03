@@ -26,3 +26,8 @@ Ask the bot for directions to and from places, based on certain trigger words: _
 - Textblob:
 
   `pip3 install textblob`
+
+## Bugs, questions and feature requests
+
+Submit an issue here on GitHub, or if you can fix the bug (or add a new feature) I assume you know what a pull request is ;)
+
