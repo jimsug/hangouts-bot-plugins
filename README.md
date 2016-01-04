@@ -11,6 +11,8 @@ Ask the bot for directions to and from places, based on certain trigger words: _
 - How long will it take to walk from Sydney to Canberra?
 - How long will it take to get from Sydney to Canberra by public transport?
 
+The bot will also send the user help if they send the `/bot directionshelp` command.
+
 ### Setup
 
 1. Create a `maps_api_key` config parameter with a Google Maps API Key. If you need help getting an API key, [read the docs](https://developers.google.com/maps/documentation/directions/get-api-key) for help.
