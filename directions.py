@@ -12,6 +12,7 @@ from urllib.parse import quote
 
 def _initialise(bot):
     plugins.register_handler(_handle_message, type="message")
+    plugins.register_user_command(["directionshelp"])
 
 def _handle_message(bot, event, command):
     if isinstance(event.conv_event, hangups.ChatMessageEvent):
@@ -32,6 +33,19 @@ def _handle_message(bot, event, command):
         yield from _getdirections(bot, event, raw_text, directions)
 
 @asyncio.coroutine
+def directionshelp(bot, event, *args):
+    conv_1on1 = yield from bot.get_1to1(event.user.id_.chat_id)
+    yield from bot.coro_send_message(conv_1on1, """You can ask for directions and it will give you an estimate. The bot listens for the following keywords: <i>how, long, take, from, to</i>
+
+By default, the time estimate will be provided for driving. The estimated time will have a map to the equivalent Google Maps search appended to it. (Sorry, this doesn't work on mobile.)
+
+For example, you can ask the following commands:
+'How long does it take to get from Sydney to Parramatta?'
+'How long does it take to get from Sydney to Parramatta by public transport?'
+'How long does it take to walk from Sydney to Parramatta?'
+'How long does it take to cycle from Sydney to Parramatta?'
+""")
+
 def _getdirections(bot, event, text, type):
     logger.info("Directions from text: " + text)
     try:
